@@ -1,0 +1,73 @@
+#light
+
+
+
+
+
+namespace ImageLibrary
+  module Operations = begin
+    val private getGrayscale : int * int * int -> int * int * int
+    val private GrayscaleRec :
+      image:(int * int * int) list list ->
+        result:(int * int * int) list list -> (int * int * int) list list
+    val Grayscale :
+      width:int ->
+        height:int ->
+          depth:int ->
+            image:(int * int * int) list list -> (int * int * int) list list
+    val private compareThreshold :
+      value:'a -> threshold:'a -> depth:int -> int when 'a : comparison
+    val private getThreshold :
+      t:int -> d:int -> int * int * int -> int * int * int
+    val private ThresholdRec :
+      image:(int * int * int) list list ->
+        t:int ->
+          d:int -> r:(int * int * int) list list -> (int * int * int) list list
+    val Threshold :
+      width:int ->
+        height:int ->
+          depth:int ->
+            image:(int * int * int) list list ->
+              threshold:int -> (int * int * int) list list
+    val private FlipHorizontalRec :
+      image:(int * int * int) list list ->
+        r:(int * int * int) list list -> (int * int * int) list list
+    val FlipHorizontal :
+      width:int ->
+        height:int ->
+          depth:int ->
+            image:(int * int * int) list list -> (int * int * int) list list
+    val private getColorDifference : int * int * int -> int * int * int -> float
+    val private isEdge :
+      int * int * int ->
+        int * int * int ->
+          int * int * int -> threshold:int -> depth:int -> int * int * int
+    val private processRow :
+      row:(int * int * int) list ->
+        nextRow:(int * int * int) list ->
+          t:int -> d:int -> r:(int * int * int) list -> (int * int * int) list
+    val private EdgeDetectRec :
+      image:(int * int * int) list list ->
+        t:int ->
+          d:int -> r:(int * int * int) list list -> (int * int * int) list list
+    val EdgeDetect :
+      width:int ->
+        height:int ->
+          depth:int ->
+            image:(int * int * int) list list ->
+              threshold:int -> (int * int * int) list list
+    val private getIndex : L:'a list -> i:int -> 'a
+    val private getCol :
+      image:(int * int * int) list list ->
+        i:int -> result:(int * int * int) list -> (int * int * int) list
+    val private RR90Rec :
+      image:(int * int * int) list list ->
+        w:int ->
+          result:(int * int * int) list list -> (int * int * int) list list
+    val RotateRight90 :
+      width:int ->
+        height:int ->
+          depth:int ->
+            image:(int * int * int) list list -> (int * int * int) list list
+  end
+
